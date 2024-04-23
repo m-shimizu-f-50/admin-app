@@ -13,4 +13,13 @@ export class MembersComponent {
     id: 1,
     name: '田中太郎',
   };
+
+  selectedMember: Member = {
+    id: 0,
+    name: '',
+  };
+
+  onSelect(member: Member): void {
+    this.selectedMember = member;
+  }
 }

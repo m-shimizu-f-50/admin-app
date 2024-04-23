@@ -1,16 +1,22 @@
 <h2>社員一覧</h2>
-<ul *ngFor="let member of members" class="members">
-  <li>
+<ul class="members">
+  <li
+    *ngFor="let member of members"
+    [class.selected]="member === selectedMember"
+    (click)="onSelect(member)"
+  >
     <span class="badge">{{ member.id }}</span
     >{{ member.name }}
   </li>
 </ul>
 
-<h2>{{ member.name }}</h2>
-<div><span>id:</span>{{ member.id }}</div>
-<div>
-  <label
-    >name:
-    <input type="text" [(ngModel)]="member.name" placeholder="名前" />
-  </label>
+<div *ngIf="selectedMember.id !== 0">
+  <h2>{{ selectedMember.name }}</h2>
+  <div><span>id:</span>{{ selectedMember.id }}</div>
+  <div>
+    <label
+      >name:
+      <input type="text" [(ngModel)]="selectedMember.name" placeholder="名前" />
+    </label>
+  </div>
 </div>
