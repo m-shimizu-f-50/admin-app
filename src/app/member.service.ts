@@ -14,4 +14,17 @@ export class MemberService {
     this.messageService.add('MemberService: 社員一覧データを取得しました。');
     return of(MEMBERS);
   }
+
+  getMember(id: number): Observable<Member> {
+    this.messageService.add(
+      `MemberService: 社員データ(id=${id})を取得しました。`
+    );
+
+    const member = MEMBERS.find((member) => member.id === id);
+    if (!member) {
+      throw new Error('Member not found');
+    }
+
+    return of(member);
+  }
 }

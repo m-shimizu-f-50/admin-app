@@ -34,16 +34,6 @@
   color: #607d8b;
 }
 
-.members li.selected {
-  background-color: #cfd8dc;
-  color: white;
-}
-
-.members li.selected:hover {
-  background-color: #bbd8dc;
-  color: white;
-}
-
 .members .badge {
   display: inline-block;
   font-size: small;
