@@ -10,13 +10,4 @@
   </li>
 </ul>
 
-<div *ngIf="selectedMember.id !== 0">
-  <h2>{{ selectedMember.name }}</h2>
-  <div><span>id:</span>{{ selectedMember.id }}</div>
-  <div>
-    <label
-      >name:
-      <input type="text" [(ngModel)]="selectedMember.name" placeholder="名前" />
-    </label>
-  </div>
-</div>
+<app-member-detail [member]="selectedMember"></app-member-detail>
