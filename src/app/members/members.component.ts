@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Member } from '../member';
-import { MEMBERS } from '../mock-members';
+import { MemberService } from '../member.service';
 
 @Component({
   selector: 'app-members',
@@ -8,9 +8,25 @@ import { MEMBERS } from '../mock-members';
   styleUrls: ['./members.component.css'],
 })
 export class MembersComponent {
-  members = MEMBERS;
-  member: Member = {
-    id: 1,
-    name: '田中太郎',
+  members: Member[] = [];
+  selectedMember: Member = {
+    id: 0,
+    name: '',
   };
+
+  constructor(private memberService: MemberService) {}
+
+  ngOnInit(): void {
+    this.getMembers();
+  }
+
+  onSelect(member: Member): void {
+    this.selectedMember = member;
+  }
+
+  getMembers(): void {
+    this.memberService
+      .getMembers()
+      .subscribe((members) => (this.members = members));
+  }
 }
