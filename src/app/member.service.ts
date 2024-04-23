@@ -3,16 +3,22 @@ import { Member } from './member';
 import { MEMBERS } from './mock-members';
 import { Observable, of } from 'rxjs';
 import { MessageService } from './message.service';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
 })
 export class MemberService {
-  constructor(private messageService: MessageService) {}
+  private membersUrl = 'api/members'; // サーバーのUrl
+
+  constructor(
+    private messageService: MessageService,
+    private http: HttpClient
+  ) {}
 
   getMembers(): Observable<Member[]> {
     this.messageService.add('MemberService: 社員一覧データを取得しました。');
-    return of(MEMBERS);
+    return this.http.get<Member[]>(this.membersUrl);
   }
 
   getMember(id: number): Observable<Member> {
@@ -26,5 +32,9 @@ export class MemberService {
     }
 
     return of(member);
+  }
+
+  private log(message: string) {
+    this.messageService.add(`MessageService: ${message}`);
   }
 }
