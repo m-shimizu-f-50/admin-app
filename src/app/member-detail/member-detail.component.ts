@@ -39,4 +39,8 @@ export class MemberDetailComponent {
   goBack(): void {
     this.location.back();
   }
+
+  save(): void {
+    this.memberService.updateMember(this.member).subscribe(() => this.goBack());
+  }
 }
