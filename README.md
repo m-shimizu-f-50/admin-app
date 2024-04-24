@@ -1,4 +1,11 @@
-# AdminApp
+# サンプル(社員名簿管理システム)
+
+### 開発環境
+angular v15.2.0
+
+### 機能
+- 社員登録、更新、削除
+- 社員検索機能
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.11.
 
